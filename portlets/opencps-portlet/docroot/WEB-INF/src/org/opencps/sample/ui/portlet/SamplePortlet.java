@@ -31,27 +31,36 @@ import com.liferay.util.bridges.mvc.MVCPortlet;
 
 /**
  * @author trungnt
- *
  */
 public class SamplePortlet extends MVCPortlet {
+
 	@Override
-	public void render(RenderRequest request, RenderResponse response) throws PortletException, IOException {
+	public void render(RenderRequest request, RenderResponse response)
+		throws PortletException, IOException {
 
-		String className = ParamUtil.getString(request, "className");
+		String className = ParamUtil
+			.getString(request, "className");
 
-		if(Validator.isNotNull(className)){
+		if (Validator
+			.isNotNull(className)) {
 			Class<?> cls = null;
 			try {
-				cls = Class.forName(className);
-			} catch (ClassNotFoundException e) {
-				_log.error(e);
+				cls = Class
+					.forName(className);
 			}
-			
-			request.setAttribute("INVOKE_CLASS", cls);
+			catch (ClassNotFoundException e) {
+				_log
+					.error(e);
+			}
+
+			request
+				.setAttribute("INVOKE_CLASS", cls);
 		}
 
 		super.render(request, response);
 	}
 
-	private Log _log = LogFactoryUtil.getLog(SamplePortlet.class.getName());
+	private Log _log = LogFactoryUtil
+		.getLog(SamplePortlet.class
+			.getName());
 }
