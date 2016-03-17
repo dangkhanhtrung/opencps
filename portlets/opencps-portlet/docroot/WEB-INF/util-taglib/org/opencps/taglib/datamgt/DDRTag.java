@@ -17,11 +17,8 @@
 
 package org.opencps.taglib.datamgt;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
-import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.taglib.util.IncludeTag;
 
 /**
@@ -43,6 +40,8 @@ public class DDRTag extends IncludeTag {
 
 	private String _itemNames;
 
+	private String _itemsEmptyOption;
+
 	private String _name;
 
 	private String _renderMode;
@@ -62,16 +61,7 @@ public class DDRTag extends IncludeTag {
 		_name = "dataItem";
 		_cssClass = null;
 		_displayStyle = "horizontal";
-	}
-
-	public String get_itemNames() {
-
-		return _itemNames;
-	}
-
-	public String get_renderMode() {
-
-		return _renderMode;
+		_itemsEmptyOption = null;
 	}
 
 	public String getCssClass() {
@@ -99,6 +89,16 @@ public class DDRTag extends IncludeTag {
 		return _initDictItemId;
 	}
 
+	public String getItemNames() {
+
+		return _itemNames;
+	}
+
+	public String getItemsEmptyOption() {
+
+		return _itemsEmptyOption;
+	}
+
 	public String getName() {
 
 		return _name;
@@ -110,9 +110,14 @@ public class DDRTag extends IncludeTag {
 		return _PAGE;
 	}
 
-	public void set_itemNames(String _itemNames) {
+	public String getRenderMode() {
 
-		this._itemNames = _itemNames;
+		return _renderMode;
+	}
+
+	public String getSelectedItems() {
+
+		return _selectedItems;
 	}
 
 	@Override
@@ -121,6 +126,10 @@ public class DDRTag extends IncludeTag {
 		request
 			.setAttribute("opencps-datamgt:ddr:dictCollectionCode",
 				_dictCollectionCode);
+
+		request
+			.setAttribute("opencps-datamgt:ddr:itemsEmptyOption",
+				_itemsEmptyOption);
 		request
 			.setAttribute("opencps-datamgt:ddr:initDictItemId",
 				_initDictItemId);
@@ -165,6 +174,16 @@ public class DDRTag extends IncludeTag {
 		this._initDictItemId = _initDictItemId;
 	}
 
+	public void setItemNames(String _itemNames) {
+
+		this._itemNames = _itemNames;
+	}
+
+	public void setItemsEmptyOption(String _itemsEmptyOption) {
+
+		this._itemsEmptyOption = _itemsEmptyOption;
+	}
+
 	public void setName(String _name) {
 
 		this._name = _name;
@@ -174,4 +193,10 @@ public class DDRTag extends IncludeTag {
 
 		this._renderMode = _renderMode;
 	}
+
+	public void setSelectedItems(String _selectedItems) {
+
+		this._selectedItems = _selectedItems;
+	}
+
 }

@@ -69,4 +69,14 @@ public class DictItemServiceImpl extends DictItemServiceBaseImpl {
 		return dictItemLocalService
 			.getDictItemsByDictCollectionId(dictCollectionId);
 	}
+
+	@JSONWebService(value = "get-dictitems-inuse-by-dictcollectionId_parentItemId")
+	public List<DictItem> getDictItemsInUseByDictCollectionIdAndParentItemId(
+		long dictCollectionId, long parentItemId)
+		throws SystemException {
+
+		return dictItemLocalService
+			.getDictItemsInUseByDictCollectionIdAndParentItemId(
+				dictCollectionId, parentItemId);
+	}
 }

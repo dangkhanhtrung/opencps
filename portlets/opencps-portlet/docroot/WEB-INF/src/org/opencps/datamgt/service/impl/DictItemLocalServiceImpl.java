@@ -346,6 +346,15 @@ public class DictItemLocalServiceImpl extends DictItemLocalServiceBaseImpl {
 			.findByD_I(dictCollectionId);
 	}
 
+	public List<DictItem> getDictItemsInUseByDictCollectionIdAndParentItemId(
+		long dictCollectionId, long parentItemId)
+		throws SystemException {
+
+		return dictItemPersistence
+			.findByDictCollectionId_ParentItemId_Inuse(dictCollectionId,
+				parentItemId);
+	}
+
 	protected String getTreeIndex(long dictItemId, long dictParentItemId)
 		throws NoSuchDictItemException, SystemException {
 

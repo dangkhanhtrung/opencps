@@ -52,8 +52,15 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[]]></description>
+			<description><![CDATA[String of long value. etc: 100,1001,10002]]></description>
 			<name>itemNames</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[String of boolean value. etc: true,false,true]]></description>
+			<name>itemsEmptyOption</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 			<type>java.lang.String</type>
@@ -66,7 +73,7 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[]]></description>
+			<description><![CDATA[horizontal or vertical]]></description>
 			<name>displayStyle</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
