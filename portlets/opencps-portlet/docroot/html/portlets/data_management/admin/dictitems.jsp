@@ -156,7 +156,7 @@
 	<liferay-ui:search-iterator/>
 </liferay-ui:search-container>
 
-
+<datamgt:ddr depthLevel="3" dictCollectionCode="abc" cssClass="selectClass"></datamgt:ddr>
 
 <%!
 	private Log _log = LogFactoryUtil.getLog("html.portlets.data_management.admin.dictitem.jsp");
