@@ -71,8 +71,10 @@ portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/datamgt/service/persist
 hooks/opencps-hook/.classpath
 hooks/opencps-hook/.settings/
 portlets/opencps-portlet/.settings/org.eclipse.jdt.ui.prefs
-portlets/opencps-portlet/docroot/WEB-INF/src/.gitignore
 portlets/opencps-portlet_backup_for_custom_tag_lib.tar.gz
 portlets/opencps-portlet/.classpath
 portlets/opencps-portlet/org.eclipse.wst.common.component
+portlets/opencps-portlet/docroot/WEB-INF/server-config.wsdd
+portlets/opencps-portlet/docroot/WEB-INF/src/org/opencps/usermgt/
+portlets/opencps-portlet/docroot/WEB-INF/src/service.properties
 
