@@ -16,17 +16,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 %>
-
-<%@ include file="/init.jsp"%>
-
-
-<aui:row>
-	<aui:col width="30">
-		<liferay-util:include page="/html/portlets/samples/methods.jsp" servletContext="<%=application %>" />
-	</aui:col>
+<%
+	JobPosSearchTerms searchTerms = (JobPosSearchTerms) searchContainer.getSearchTerms();
 	
-	<aui:col width="70">
-		<liferay-util:include page="/html/portlets/samples/invoke_form.jsp" servletContext="<%=application %>" />
-	</aui:col>
-</aui:row>					
-
+	jobPos = JobPosLocalServiceUtil.getJobPoss(
+		workingUnitId, searchContainer.getOrderByComparator()); 
+	
+	totalCount = JobPosLocalServiceUtil.countAll();
+	total = totalCount;
+	results = jobPos;
+	pageContext.setAttribute("results", results);
+	pageContext.setAttribute("total", total);
+%>
