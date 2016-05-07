@@ -294,6 +294,7 @@
 		<field name="actionUserId" type="long" />
 		<field name="actionDatetime" type="Date" />
 		<field name="actionNote" type="String" />
+		<field name="actionStepId" type="long" />
 		<field name="assignToUserId" type="long" />
 		<field name="processWorkflowId" type="long" />
 		<field name="dossierStatus" type="int" />
@@ -359,16 +360,11 @@
 	</model>
 	<model name="org.opencps.processmgt.model.WorkflowOutput">
 		<field name="workflowOutputId" type="long" />
-		<field name="companyId" type="long" />
-		<field name="groupId" type="long" />
-		<field name="userId" type="long" />
-		<field name="createDate" type="Date" />
-		<field name="modifiedDate" type="Date" />
 		<field name="processWorkflowId" type="long" />
 		<field name="dossierPartId" type="long" />
-		<field name="required" type="int" />
-		<field name="esign" type="int" />
-		<field name="postback" type="int" />
+		<field name="required" type="boolean" />
+		<field name="esign" type="boolean" />
+		<field name="postback" type="boolean" />
 	</model>
 	<model name="org.opencps.dossiermgt.model.Dossier">
 		<field name="dossierId" type="long" />
@@ -391,7 +387,7 @@
 		<field name="govAgencyOrganizationId" type="long" />
 		<field name="serviceMode" type="int" />
 		<field name="counter" type="int" />
-		<field name="subjectId" type="long" />
+		<field name="subjectId" type="String" />
 		<field name="subjectName" type="String" />
 		<field name="address" type="String" />
 		<field name="cityCode" type="String" />
@@ -468,6 +464,7 @@
 		<field name="sibling" type="double" />
 		<field name="treeIndex" type="String" />
 		<field name="formScript" type="String" />
+		<field name="formReport" type="String" />
 		<field name="sampleData" type="String" />
 		<field name="required" type="boolean" />
 		<field name="templateFileNo" type="String" />
@@ -505,6 +502,7 @@
 		<field name="userId" type="long" />
 		<field name="createDate" type="Date" />
 		<field name="modifiedDate" type="Date" />
+		<field name="uuid" type="String" />
 		<field name="dossierId" type="long" />
 		<field name="dossierPartId" type="long" />
 		<field name="displayName" type="String" />

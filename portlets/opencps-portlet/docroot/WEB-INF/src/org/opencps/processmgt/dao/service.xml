@@ -70,7 +70,7 @@
 		<column name="externalAppUrl" type="String" />
 		
 		<!-- Order -->
-		<order by="desc">
+		<order by="asc">
 			<order-column name="sequenceNo"/>
 		</order>
 		
@@ -83,6 +83,10 @@
 			<finder-column name="serviceProcessId"/>
 		</finder>
 	
+		<finder return-type="Collection" name="ProcessStepIds">
+			<finder-column name="groupId"/>
+			<finder-column name="processStepId" arrayable-operator="OR"/>
+		</finder>
 	</entity>
 
 	<entity name="ProcessStepDossierPart" local-service="true" remote-service="true"
@@ -90,7 +94,11 @@
 
 		<column name="processStepId" type="long" primary="true" />
 		<column name="dossierPartId" type="long" primary="true" />
-
+		
+		<finder return-type="Collection" name="ProcessStepId">
+			<finder-column name="processStepId"/>
+		</finder>
+		
 	</entity>
 
 	<entity name="StepAllowance" local-service="true" remote-service="true"
@@ -118,6 +126,9 @@
 		<finder return-type="StepAllowance" name="STEP_ROLE">
 			<finder-column name="processStepId"/>
 			<finder-column name="readOnly"/>
+		</finder>
+		<finder return-type="Collection" name="RoleIds">
+			<finder-column name="roleId" arrayable-operator="OR"/>
 		</finder>
 	</entity>
 
@@ -156,6 +167,18 @@
 			<finder-column name="serviceProcessId"/>
 		</finder>
 
+		<finder return-type="Collection" name="F_ProcessWorkflow_Step">
+			<finder-column name="groupId"/>
+			<finder-column name="serviceProcessId"/>
+			<finder-column name="preProcessStepId"/>
+		</finder>
+		
+		<finder return-type="ProcessWorkflow" name="F_ProcessWorkflow" unique="true">
+			<finder-column name="serviceProcessId"/>
+			<finder-column name="preProcessStepId"/>
+			<finder-column name="actionName"/>
+		</finder>
+		
 	</entity>
 
 	<entity name="WorkflowOutput" local-service="true" remote-service="true"
@@ -165,21 +188,19 @@
 
 		<column name="workflowOutputId" type="long" primary="true" />
 
-		<!-- Audit fields -->
-
-		<column name="companyId" type="long" />
-		<column name="groupId" type="long" />
-		<column name="userId" type="long" />
-		<column name="createDate" type="Date" />
-		<column name="modifiedDate" type="Date" />
 
 		<!-- Other fields -->
 
 		<column name="processWorkflowId" type="long" />
 		<column name="dossierPartId" type="long" />
-		<column name="required" type="int"/>
-		<column name="esign" type="int"/>
-		<column name="postback" type="int"/>
+		<column name="required" type="boolean"/>
+		<column name="esign" type="boolean"/>
+		<column name="postback" type="boolean"/>
+		
+		<finder return-type="Collection" name="P_W_ID">
+			<finder-column name="processWorkflowId"/>
+		</finder>
+		
 	</entity>
 
 	<entity name="ProcessOrder" local-service="true" remote-service="true"
@@ -211,10 +232,15 @@
 		<column name="actionUserId" type="long"/>
 		<column name="actionDatetime" type="Date"/>
 		<column name="actionNote" type="String"/>
+		<column name="actionStepId" type="long"/>
 		<column name="assignToUserId" type="long"/>
 		<column name="processWorkflowId" type="long"/>
 		<column name="dossierStatus" type="int"/>
 		<column name="errorInfo" type="String"/>
+		
+		<finder return-type="Collection" name="processStepId">
+			<finder-column name="processStepId"/>
+		</finder>
 	</entity>
 
 	<entity name="ActionHistory" local-service="true" remote-service="true"
@@ -243,6 +269,16 @@
 		<column name="actionUserId" type="long"/>
 		<column name="daysDoing" type="int"/>
 		<column name="daysDelay" type="int"/>
+		
+		<order by="asc">
+			<order-column name="actionHistoryId"/>
+		</order>
+		
+		<finder return-type="Collection" name="F_ProcessOrderId">
+			<finder-column name="groupId"/>
+			<finder-column name="processOrderId"/>
+		</finder>
+		
 	</entity>
 
 	<exceptions>

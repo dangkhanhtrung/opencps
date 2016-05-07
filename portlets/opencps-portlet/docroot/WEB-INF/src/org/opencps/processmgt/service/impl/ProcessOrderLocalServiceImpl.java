@@ -1,17 +1,4 @@
 /**
-<<<<<<< HEAD
- * Copyright (c) 2000-present Liferay, Inc. All rights reserved.
- *
- * This library is free software; you can redistribute it and/or modify it under
- * the terms of the GNU Lesser General Public License as published by the Free
- * Software Foundation; either version 2.1 of the License, or (at your option)
- * any later version.
- *
- * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
- * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
- * details.
-=======
  * OpenCPS is the open source Core Public Services software
  * Copyright (C) 2016-present OpenCPS community
  * 
@@ -26,12 +13,16 @@
  * GNU Affero General Public License for more details.
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>
->>>>>>> FETCH_HEAD
  */
 
 package org.opencps.processmgt.service.impl;
 
+import java.util.List;
+
+import org.opencps.processmgt.model.ProcessOrder;
 import org.opencps.processmgt.service.base.ProcessOrderLocalServiceBaseImpl;
+
+import com.liferay.portal.kernel.util.OrderByComparator;
 
 /**
  * The implementation of the process order local service.
@@ -54,4 +45,11 @@ public class ProcessOrderLocalServiceImpl
 	 *
 	 * Never reference this interface directly. Always use {@link org.opencps.processmgt.service.ProcessOrderLocalServiceUtil} to access the process order local service.
 	 */
+	public int countProcessOrder(long groupId, String keywords, String processStepId, String assignToUserId) {
+		return processOrderFinder.countProcessOrder(groupId, keywords, processStepId, assignToUserId);
+    }
+	
+	public List searchProcessOrder(long groupId, String keywords, String processStepId, String assignToUserId, int start, int end, OrderByComparator orderByComparator) {
+		return processOrderFinder.searchProcessOrder(groupId, keywords, processStepId, assignToUserId, start, end, orderByComparator);
+    }
 }

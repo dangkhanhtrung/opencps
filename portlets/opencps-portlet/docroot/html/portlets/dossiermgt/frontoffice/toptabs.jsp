@@ -55,7 +55,7 @@
 			DossierPermission.contains(permissionChecker, scopeGroupId, ActionKeys.VIEW)) {
 		PortletURL viewExternalDossierURL = renderResponse.createRenderURL();
 		viewExternalDossierURL.setParameter("mvcPath", templatePath + "frontofficeexternaldossierlist.jsp");
-		viewExternalDossierURL.setParameter("tabs1", DossierMgtUtil.TOP_TABS_DOSSIER_FILE);
+		viewExternalDossierURL.setParameter("tabs1", DossierMgtUtil.TOP_TABS_EXTERNAL_DOSSIER);
 		urls.add(viewExternalDossierURL.toString());
 	}
 %>

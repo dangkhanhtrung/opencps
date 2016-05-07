@@ -548,7 +548,7 @@
 		<portlet-name>12</portlet-name>
 		<display-name>Dossier Admin Management</display-name>
 		<portlet-class>
-			org.opencps.processmgt.portlet.ProcessMgtAdminPortlet
+			org.opencps.dossiermgt.portlet.DossierMgtAdminPortlet
 		</portlet-class>
 		<init-param>
 			<name>view-template</name>
@@ -590,7 +590,8 @@
 		</portlet-class>
 		<init-param>
 			<name>view-template</name>
-			<value>/html/portlets/dossiermgt/frontoffice/frontofficedossierlist.jsp</value>
+			<!-- <value>/html/portlets/dossiermgt/frontoffice/frontofficedossierlist.jsp</value> -->
+			<value>/html/portlets/dossiermgt/frontoffice/frontofficedossierresult.jsp</value>
 		</init-param>
 		<init-param>
 			<name>template-path</name>
@@ -628,7 +629,7 @@
 		</portlet-class>
 		<init-param>
 			<name>view-template</name>
-			<value>/html/portlets/dossiermgt/statemenu/view.jsp</value>
+			<value>/html/portlets/dossiermgt/statemenu/dossiermenu.jsp</value>
 		</init-param>
 		<init-param>
 			<name>template-path</name>
@@ -667,12 +668,12 @@
 		<init-param>
 			<name>view-template</name>
 			<value>
-				/html/portlets/dossiermgt/monitoring/view.jsp
+				/html/portlets/dossiermgt/monitoring/dossiermonitoringlookupresult.jsp
 			</value>
 		</init-param>
 		<init-param>
 			<name>template-path</name>
-			<value>/html/portlets/dossiermgt/statemenu/</value>
+			<value>/html/portlets/dossiermgt/monitoring/</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>

@@ -25,7 +25,7 @@
 		<column name="templateNo" type="String"></column>
 
 		<finder return-type="Collection" name="TemplateName">
-			<finder-column name="templateName" />
+			<finder-column name="templateName" comparator="LIKE"/>
 		</finder>
 
 		<finder return-type="DossierTemplate" name="TemplateNo">
@@ -61,6 +61,7 @@
 		<column name="sibling" type="double"></column>
 		<column name="treeIndex" type="String"></column>
 		<column name="formScript" type="String"></column>
+		<column name="formReport" type="String" />
 		<column name="sampleData" type="String"></column>
 		<column name="required" type="boolean"></column>
 		<column name="templateFileNo" type="String"></column>
@@ -84,12 +85,23 @@
 			<finder-column name="parentId"></finder-column>
 		</finder>
 
-		<finder return-type="DossierPart" name="Sibling">
-			<finder-column name="sibling"></finder-column>
+		<finder return-type="DossierPart" name="T_S">
+			<finder-column name="dossierTemplateId" />
+			<finder-column name="sibling" />
 		</finder>
 
 		<finder return-type="DosserPart" name="PartNo">
-			<finder-column name="partNo"></finder-column>
+			<finder-column name="partNo" />
+		</finder>
+		
+		<finder return-type="Collection" name="T_T">
+			<finder-column name="dossierTemplateId"/>
+			<finder-column name="partType" />
+		</finder>
+		
+		<finder return-type="Collection" name="T_P">
+		  <finder-column name="dossierTemplateId" />
+		  <finder-column name="parentId" />
 		</finder>
 	</entity>
 
@@ -122,13 +134,23 @@
 		<column name="domainCode" type="String"></column>
 
 		<finder return-type="Collection" name="DossierTemplateId">
-			<finder-column name="dossierTemplateId"></finder-column>
+			<finder-column name="dossierTemplateId" />
+		</finder>
+		
+		<finder return-type="Collection" name="G_M">
+			<finder-column name="groupId" />
+			<finder-column name="serviceMode"/>
+		</finder>
+
+		<finder return-type="ServiceConfig" name="F_serviceInfoId" unique="true">
+			<finder-column name="groupId" />
+			<finder-column name="serviceInfoId"/>
 		</finder>
 
 	</entity>
 	
 	
-	<entity name="Dossier" local-service="true">
+	<entity name="Dossier" local-service="true" table="opencps_dossier">
     
     	<!-- PK fields -->
     	
@@ -158,7 +180,7 @@
         <column name="govAgencyOrganizationId" type="long"/>
         <column name="serviceMode" type="int"/>
         <column name="counter" type="int"/>
-        <column name="subjectId" type="long"/>
+        <column name="subjectId" type="String"/>
         <column name="subjectName" type="String"/>
         <column name="address" type="String"/>
         <column name="cityCode" type="String"/>
@@ -181,10 +203,26 @@
         <order by="desc">
             <order-column name="modifiedDate" order-by="desc"></order-column>
         </order>
+        <finder name="ReceptionNo" return-type="Dossier">
+            <finder-column name="receptionNo"></finder-column>
+        </finder>
+        
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
+        
+        <finder return-type="Dossier" name="F_ReceptionNo" unique="true">
+			<finder-column name="groupId" />
+			<finder-column name="receptionNo"/>
+		</finder>
+		
+        <reference entity="DLFileEntry" package-path="com.liferay.portlet.documentlibrary"/>
+        <reference package-path="com.liferay.portlet.documentlibrary" entity="DLFolder" />
+        <reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
         
     </entity>
     
-    <entity name="DossierStatus" local-service="true">
+    <entity name="DossierStatus" local-service="true" table="opencps_dossierstatus">
     
    		<!-- PK fields -->
    		
@@ -207,9 +245,15 @@
         <column name="messageInfo" type="String"/>
         <column name="updateDatetime" type="Date"/>
         <column name="syncStatus" type="int"/>
+        <order by="desc">
+            <order-column name="modifiedDate" order-by="desc"></order-column>
+        </order>
+        <finder name="DossierId" return-type="Collection">
+            <finder-column name="dossierId"></finder-column>
+        </finder>
     </entity>
     
-    <entity name="DossierLog" local-service="true">
+    <entity name="DossierLog" local-service="true" table="opencps_dossierlog">
     
    		<!-- PK fields -->
     
@@ -232,9 +276,28 @@
         <column name="messageInfo" type="String"/>
         <column name="updateDatetime" type="Date"/>
         <column name="level" type="int"/>
+        <order by="desc">
+            <order-column name="modifiedDate" order-by="desc"></order-column>
+        </order>
+        <finder name="DossierId" return-type="Collection">
+            <finder-column name="dossierId"></finder-column>
+        </finder>
+        <finder name="DossierAndLevel" return-type="Collection">
+            <finder-column name="dossierId"></finder-column>
+            <finder-column name="level" comparator="=" arrayable-operator="OR"></finder-column>
+        </finder>
+        <finder name="Level" return-type="Collection">
+            <finder-column name="level" comparator="=" arrayable-operator="OR"></finder-column>
+        </finder>
+         <finder name="F_Level_Warring_Error" where=" (level = 1 OR level = 2) " return-type="Collection">
+         	<finder-column name="groupId"></finder-column>
+        </finder>
+        <finder name="F_Level_All" return-type="Collection">
+         	<finder-column name="groupId"></finder-column>
+        </finder>        
     </entity>
     
-    <entity name="FileGroup" local-service="true">
+    <entity name="FileGroup" local-service="true" table="opencps_file_group">
     
     	<!-- PK fields -->
     
@@ -249,14 +312,22 @@
 		<column name="modifiedDate" type="Date" />
 		
 		<!-- Other fields -->
+		<column name="uuid" type="String"/>
         <column name="dossierId" type="long"/>
         <column name="dossierPartId" type="long"/>
         <column name="displayName" type="String"/>
         <column name="removed" type="int"/>
         <column name="syncStatus" type="int"/>
+        <finder name="D_P" return-type="Collection">
+            <finder-column name="dossierId"></finder-column>
+            <finder-column name="dossierPartId"></finder-column>
+        </finder>
+        <finder name="DossierId" return-type="Collection">
+            <finder-column name="dossierId"></finder-column>
+        </finder>        
     </entity>
     
-    <entity name="DossierFile" local-service="true">
+    <entity name="DossierFile" local-service="true" table="opencps_dossier_file">
     
     	<!-- PK fields -->
     	
@@ -289,6 +360,17 @@
         <column name="removed" type="int"/>
         <column name="original" type="int"/>
         <column name="syncStatus" type="int"/>
+        <finder name="D_P" return-type="DossierFile">
+            <finder-column name="dossierId"></finder-column>
+            <finder-column name="dossierPartId"></finder-column>
+        </finder>
+        <finder name="DossierId" return-type="Collection">
+            <finder-column name="dossierId"></finder-column>
+        </finder>
+        <finder name="D_F" return-type="Collection">
+            <finder-column name="dossierId"></finder-column>
+            <finder-column name="groupFileId"></finder-column>
+        </finder>        
     </entity>
 
 	<exceptions>
@@ -309,6 +391,23 @@
 		<exception>InvalidServiceConfigGovCode</exception>
 		<exception>InvalidInWorkingUnit</exception>
 		<exception>InvalidServiceDomain</exception>
+        <exception>EmptyDossierCityCode</exception>
+        <exception>EmptyDossierDistrictCode</exception>
+        <exception>EmptyDossierWardCode</exception>
+        <exception>EmptyDossierSubjectName</exception>
+        <exception>EmptyDossierSubjectId</exception>
+        <exception>EmptyDossierAddress</exception>
+        <exception>EmptyDossierContactName</exception>
+        <exception>OutOfLengthDossierSubjectName</exception>
+        <exception>OutOfLengthDossierSubjectId</exception>
+        <exception>OutOfLengthDossierAddress</exception>
+        <exception>OutOfLengthDossierContactName</exception>
+        <exception>OutOfLengthDossierContactTelNo</exception>
+        <exception>OutOfLengthDossierContactEmail</exception>
+        <exception>OutOfLengthDossierNote</exception>
+        <exception>EmptyDossierFile</exception>
+        <exception>InvalidDossierObject</exception>
+        <exception>CreateDossierFolder</exception>		
 	</exceptions>
 
 </service-builder>

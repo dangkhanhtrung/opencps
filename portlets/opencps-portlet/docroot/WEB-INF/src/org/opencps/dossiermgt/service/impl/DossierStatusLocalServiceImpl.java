@@ -19,7 +19,14 @@
 
 package org.opencps.dossiermgt.service.impl;
 
+import org.opencps.dossiermgt.NoSuchDossierException;
+import org.opencps.dossiermgt.NoSuchDossierStatusException;
+import org.opencps.dossiermgt.model.DossierStatus;
+import org.opencps.dossiermgt.model.impl.DossierStatusModelImpl;
 import org.opencps.dossiermgt.service.base.DossierStatusLocalServiceBaseImpl;
+
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.util.OrderByComparatorFactoryUtil;
 
 /**
  * The implementation of the dossier status local service.
@@ -42,4 +49,21 @@ public class DossierStatusLocalServiceImpl
 	 *
 	 * Never reference this interface directly. Always use {@link org.opencps.dossiermgt.service.DossierStatusLocalServiceUtil} to access the dossier status local service.
 	 */
+	
+	/**
+	 * <p>
+	 * Lấy về thông tin một trạng thái hồ sơ mới cập nhật của hồ sơ
+	 * </p>
+	 * 
+	 * @param dossierId
+	 *            là mã hồ sơ
+	 * @return trả về đối tượng trạng thái hồ sơ mới nhất của một hồ sơ
+	 * @throws SystemException
+	 *             Nếu ngoại lệ hệ thống xảy ra
+	 * @throws NoSuchDossierStatusException
+	 *             Khi xảy ra lỗi không tìm thấy DossierStatus
+	 */
+	public DossierStatus getNewestStatusUpdated(long dossierId) throws SystemException, NoSuchDossierStatusException {
+		return dossierStatusPersistence.fetchByDossierId_First(dossierId, OrderByComparatorFactoryUtil.create(DossierStatusModelImpl.TABLE_NAME, "updateDatetime", "desc"));
+	}
 }

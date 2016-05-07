@@ -39,6 +39,16 @@ public class DossierMgtUtil {
 	public static final String TOP_TABS_DOSSIER = "dossier";
 	public static final String TOP_TABS_DOSSIER_FILE = "dossier-file";
 	public static final String TOP_TABS_EXTERNAL_DOSSIER = "external-dossier";
+	
+	public static final String TOP_TABS_LOOKUP_RESULT = "lookup-result";
+	public static final String TOP_TABS_NEW_PROCESSING = "new-processing";
+	public static final String TOP_TABS_PROCESS_MONITORING = "process-monitoring";
+	public static final String TOP_TABS_DOSSIER_SEARCH = "dossier-search";
+	
+	public static final int DOSSIELOG_LEVEL_NORMAL = 0;
+	public static final int DOSSIELOG_LEVEL_WARNING = 1;
+	public static final int DOSSIELOG_LEVEL_ERROR = 2;
+	
 	public static final String[] _DOSSIER_CATEGORY_NAMES = {
 		"dossier-info"
 	};
