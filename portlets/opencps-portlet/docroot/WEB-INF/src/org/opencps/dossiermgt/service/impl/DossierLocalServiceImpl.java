@@ -869,11 +869,6 @@ public class DossierLocalServiceImpl extends DossierLocalServiceBaseImpl {
 		return dossierPersistence.countByGroupId(groupId);
 	}
 
-	public int countDossier(long groupId, String keyword, int dossierStatus) {
-
-		return dossierFinder.countDossier(groupId, keyword, dossierStatus);
-	}
-
 	public List<Dossier> getDossierByGroupId(long groupId)
 	    throws SystemException {
 
