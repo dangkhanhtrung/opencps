@@ -48,6 +48,7 @@
         <finder return-type="Collection" name="D_">
         	<finder-column name="dossierId"/>
         </finder>
+
         <finder name="MerchantResponse" return-type="PaymentFile">
             <finder-column name="keypayTransactionId"></finder-column>
             <finder-column name="keypayGoodCode"></finder-column>
