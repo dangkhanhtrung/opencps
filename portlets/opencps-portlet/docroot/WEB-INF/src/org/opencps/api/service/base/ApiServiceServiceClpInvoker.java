@@ -24,50 +24,50 @@ import java.util.Arrays;
  */
 public class ApiServiceServiceClpInvoker {
 	public ApiServiceServiceClpInvoker() {
-		_methodName26 = "getBeanIdentifier";
+		_methodName18 = "getBeanIdentifier";
 
-		_methodParameterTypes26 = new String[] {  };
+		_methodParameterTypes18 = new String[] {  };
 
-		_methodName27 = "setBeanIdentifier";
+		_methodName19 = "setBeanIdentifier";
 
-		_methodParameterTypes27 = new String[] { "java.lang.String" };
+		_methodParameterTypes19 = new String[] { "java.lang.String" };
 
-		_methodName32 = "searchDossierByUserAssignProcessOrder";
+		_methodName24 = "searchDossierByUserAssignProcessOrder";
 
-		_methodParameterTypes32 = new String[] { "java.lang.String" };
+		_methodParameterTypes24 = new String[] { "java.lang.String" };
 
-		_methodName33 = "searchDossierByProcessStepAndUser";
+		_methodName25 = "searchDossierByProcessStepAndUser";
 
-		_methodParameterTypes33 = new String[] {
+		_methodParameterTypes25 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String"
 			};
 
-		_methodName34 = "getByoid";
+		_methodName26 = "getByoid";
 
-		_methodParameterTypes34 = new String[] { "java.lang.String" };
+		_methodParameterTypes26 = new String[] { "java.lang.String" };
 
-		_methodName35 = "addDossierFile";
+		_methodName27 = "addDossierFile";
 
-		_methodParameterTypes35 = new String[] {
+		_methodParameterTypes27 = new String[] {
 				"java.lang.String", "java.lang.String"
 			};
 
-		_methodName36 = "nextStep";
+		_methodName28 = "nextStep";
 
-		_methodParameterTypes36 = new String[] {
+		_methodParameterTypes28 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String"
 			};
 
-		_methodName37 = "nextStep";
+		_methodName29 = "nextStep";
 
-		_methodParameterTypes37 = new String[] {
+		_methodParameterTypes29 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String"
 			};
 
-		_methodName38 = "searchDossierByDS_RD_SN_U";
+		_methodName30 = "searchDossierByDS_RD_SN_U";
 
-		_methodParameterTypes38 = new String[] {
+		_methodParameterTypes30 = new String[] {
 				"java.lang.String", "java.lang.String", "java.lang.String",
 				"java.lang.String", "java.lang.String"
 			};
@@ -75,55 +75,55 @@ public class ApiServiceServiceClpInvoker {
 
 	public Object invokeMethod(String name, String[] parameterTypes,
 		Object[] arguments) throws Throwable {
-		if (_methodName26.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes26, parameterTypes)) {
+		if (_methodName18.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes18, parameterTypes)) {
 			return ApiServiceServiceUtil.getBeanIdentifier();
 		}
 
-		if (_methodName27.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes27, parameterTypes)) {
+		if (_methodName19.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes19, parameterTypes)) {
 			ApiServiceServiceUtil.setBeanIdentifier((java.lang.String)arguments[0]);
 
 			return null;
 		}
 
-		if (_methodName32.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes32, parameterTypes)) {
+		if (_methodName24.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes24, parameterTypes)) {
 			return ApiServiceServiceUtil.searchDossierByUserAssignProcessOrder((java.lang.String)arguments[0]);
 		}
 
-		if (_methodName33.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes33, parameterTypes)) {
+		if (_methodName25.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes25, parameterTypes)) {
 			return ApiServiceServiceUtil.searchDossierByProcessStepAndUser((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2]);
 		}
 
-		if (_methodName34.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes34, parameterTypes)) {
+		if (_methodName26.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes26, parameterTypes)) {
 			return ApiServiceServiceUtil.getByoid((java.lang.String)arguments[0]);
 		}
 
-		if (_methodName35.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes35, parameterTypes)) {
+		if (_methodName27.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes27, parameterTypes)) {
 			return ApiServiceServiceUtil.addDossierFile((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1]);
 		}
 
-		if (_methodName36.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes36, parameterTypes)) {
+		if (_methodName28.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes28, parameterTypes)) {
 			return ApiServiceServiceUtil.nextStep((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2]);
 		}
 
-		if (_methodName37.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes37, parameterTypes)) {
+		if (_methodName29.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes29, parameterTypes)) {
 			return ApiServiceServiceUtil.nextStep((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3]);
 		}
 
-		if (_methodName38.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes38, parameterTypes)) {
+		if (_methodName30.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes30, parameterTypes)) {
 			return ApiServiceServiceUtil.searchDossierByDS_RD_SN_U((java.lang.String)arguments[0],
 				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
 				(java.lang.String)arguments[3], (java.lang.String)arguments[4]);
@@ -132,22 +132,22 @@ public class ApiServiceServiceClpInvoker {
 		throw new UnsupportedOperationException();
 	}
 
+	private String _methodName18;
+	private String[] _methodParameterTypes18;
+	private String _methodName19;
+	private String[] _methodParameterTypes19;
+	private String _methodName24;
+	private String[] _methodParameterTypes24;
+	private String _methodName25;
+	private String[] _methodParameterTypes25;
 	private String _methodName26;
 	private String[] _methodParameterTypes26;
 	private String _methodName27;
 	private String[] _methodParameterTypes27;
-	private String _methodName32;
-	private String[] _methodParameterTypes32;
-	private String _methodName33;
-	private String[] _methodParameterTypes33;
-	private String _methodName34;
-	private String[] _methodParameterTypes34;
-	private String _methodName35;
-	private String[] _methodParameterTypes35;
-	private String _methodName36;
-	private String[] _methodParameterTypes36;
-	private String _methodName37;
-	private String[] _methodParameterTypes37;
-	private String _methodName38;
-	private String[] _methodParameterTypes38;
+	private String _methodName28;
+	private String[] _methodParameterTypes28;
+	private String _methodName29;
+	private String[] _methodParameterTypes29;
+	private String _methodName30;
+	private String[] _methodParameterTypes30;
 }

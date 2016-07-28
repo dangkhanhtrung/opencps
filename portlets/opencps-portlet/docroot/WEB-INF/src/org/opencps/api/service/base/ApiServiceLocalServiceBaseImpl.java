@@ -35,9 +35,6 @@ import org.opencps.api.model.ApiService;
 import org.opencps.api.service.ApiServiceLocalService;
 import org.opencps.api.service.persistence.ApiServicePersistence;
 
-import org.opencps.dossiermgt.service.persistence.DossierFinder;
-import org.opencps.dossiermgt.service.persistence.DossierPersistence;
-
 import java.io.Serializable;
 
 import java.util.List;
@@ -227,6 +224,7 @@ public abstract class ApiServiceLocalServiceBaseImpl
 	 * @throws PortalException if a api service with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public ApiService getApiService(long apiLogId)
 		throws PortalException, SystemException {
 		return apiServicePersistence.findByPrimaryKey(apiLogId);
@@ -432,80 +430,6 @@ public abstract class ApiServiceLocalServiceBaseImpl
 		this.userPersistence = userPersistence;
 	}
 
-	/**
-	 * Returns the dossier local service.
-	 *
-	 * @return the dossier local service
-	 */
-	public org.opencps.dossiermgt.service.DossierLocalService getDossierLocalService() {
-		return dossierLocalService;
-	}
-
-	/**
-	 * Sets the dossier local service.
-	 *
-	 * @param dossierLocalService the dossier local service
-	 */
-	public void setDossierLocalService(
-		org.opencps.dossiermgt.service.DossierLocalService dossierLocalService) {
-		this.dossierLocalService = dossierLocalService;
-	}
-
-	/**
-	 * Returns the dossier remote service.
-	 *
-	 * @return the dossier remote service
-	 */
-	public org.opencps.dossiermgt.service.DossierService getDossierService() {
-		return dossierService;
-	}
-
-	/**
-	 * Sets the dossier remote service.
-	 *
-	 * @param dossierService the dossier remote service
-	 */
-	public void setDossierService(
-		org.opencps.dossiermgt.service.DossierService dossierService) {
-		this.dossierService = dossierService;
-	}
-
-	/**
-	 * Returns the dossier persistence.
-	 *
-	 * @return the dossier persistence
-	 */
-	public DossierPersistence getDossierPersistence() {
-		return dossierPersistence;
-	}
-
-	/**
-	 * Sets the dossier persistence.
-	 *
-	 * @param dossierPersistence the dossier persistence
-	 */
-	public void setDossierPersistence(DossierPersistence dossierPersistence) {
-		this.dossierPersistence = dossierPersistence;
-	}
-
-	/**
-	 * Returns the dossier finder.
-	 *
-	 * @return the dossier finder
-	 */
-	public DossierFinder getDossierFinder() {
-		return dossierFinder;
-	}
-
-	/**
-	 * Sets the dossier finder.
-	 *
-	 * @param dossierFinder the dossier finder
-	 */
-	public void setDossierFinder(DossierFinder dossierFinder) {
-		this.dossierFinder = dossierFinder;
-	}
-
 	public void afterPropertiesSet() {
 		Class<?> clazz = getClass();
 
@@ -604,14 +528,6 @@ public abstract class ApiServiceLocalServiceBaseImpl
 	protected com.liferay.portal.service.UserService userService;
 	@BeanReference(type = UserPersistence.class)
 	protected UserPersistence userPersistence;
-	@BeanReference(type = org.opencps.dossiermgt.service.DossierLocalService.class)
-	protected org.opencps.dossiermgt.service.DossierLocalService dossierLocalService;
-	@BeanReference(type = org.opencps.dossiermgt.service.DossierService.class)
-	protected org.opencps.dossiermgt.service.DossierService dossierService;
-	@BeanReference(type = DossierPersistence.class)
-	protected DossierPersistence dossierPersistence;
-	@BeanReference(type = DossierFinder.class)
-	protected DossierFinder dossierFinder;
 	private String _beanIdentifier;
 	private ClassLoader _classLoader;
 	private ApiServiceLocalServiceClpInvoker _clpInvoker = new ApiServiceLocalServiceClpInvoker();

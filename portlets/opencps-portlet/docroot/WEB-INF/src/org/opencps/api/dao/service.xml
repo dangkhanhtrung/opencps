@@ -19,6 +19,5 @@
         <column name="params" type="String"></column>
         <column name="status" type="String"></column>
         
-		<reference entity="Dossier" package-path="org.opencps.dossiermgt.dao" />		
 	</entity>
 </service-builder>
